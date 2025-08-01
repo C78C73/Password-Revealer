@@ -4,6 +4,7 @@
   "version": "1.0",
   "description": "Click to show password fields on the current page.",
   "permissions": ["scripting", "activeTab"],
+  "host_permissions": ["<all_urls>"],
   "action": {
     "default_popup": "popup.html",
     "default_icon": {
