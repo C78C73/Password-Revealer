@@ -1,10 +1,9 @@
 {
   "manifest_version": 3,
-  "name": "Reveal Password",
-  "version": "1.0",
-  "description": "Click to show password fields on the current page.",
+  "name": "Password Revealer - Show Hidden Passwords",
+  "version": "1.1.0",
+  "description": "A simple, privacy-focused Chrome extension to reveal hidden password fields on any website. No data is stored or transmitted.",
   "permissions": ["scripting", "activeTab"],
-  "host_permissions": ["<all_urls>"],
   "action": {
     "default_popup": "popup.html",
     "default_icon": {
