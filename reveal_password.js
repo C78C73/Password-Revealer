@@ -45,13 +45,12 @@
   function revealAndStop(inputs) {
     inputs.forEach((input, idx) => {
       try {
-        console.log(`[Password Revealer] Revealing password field #${idx + 1}:`, input);
         input.type = 'text';
         if (input.type !== 'text') {
-          console.warn(`[Password Revealer] Failed to change input type for:`, input);
+          // Could not reveal
         }
       } catch (err) {
-        console.error('[Password Revealer] Failed to reveal password for an input:', err, input);
+        // Ignore errors
       }
     });
   }
@@ -61,12 +60,11 @@
     try {
       let inputs = findPasswordInputsDeep(document);
       inputs = inputs.concat(findPasswordInputsInFrames());
-      console.log(`[Password Revealer] Attempt ${attempts}: Found ${inputs.length} password input(s) (deep + frames).`);
       if (inputs.length === 0) {
         if (attempts < maxAttempts) {
           setTimeout(tryReveal, interval);
         } else {
-          console.warn('[Password Revealer] No password fields found after max attempts.');
+          // No password fields found after max attempts
         }
         return;
       }
@@ -75,7 +73,7 @@
       observer.disconnect();
       return;
     } catch (error) {
-      console.error('[Password Revealer] Error revealing passwords:', error);
+      // Ignore errors
     }
   }
 
@@ -84,7 +82,6 @@
     let inputs = findPasswordInputsDeep(document);
     inputs = inputs.concat(findPasswordInputsInFrames());
     if (inputs.length > 0) {
-      console.log('[Password Revealer] MutationObserver: Found password input(s) after DOM change.');
       revealAndStop(inputs);
       observer.disconnect();
     }
